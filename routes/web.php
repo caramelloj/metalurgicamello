@@ -1,7 +1,14 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CustomerController;
+
+// App routes
+
+Route::resource('/clientes', CustomerController::class);
+
+
 
 Route::get('/', function () {
     return view('welcome');
