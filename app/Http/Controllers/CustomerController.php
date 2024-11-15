@@ -7,12 +7,22 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+
+    public function getCustomer(Request $request){
+
+        $customers = Customer::searchCustomer($request->customerName)->get();
+
+        return view('customer.show_customers', compact('customers'));
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $customers = Customer::all();
+
+        return view('customer.show_customers', compact('customers'));
     }
 
     /**
@@ -61,7 +71,7 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**

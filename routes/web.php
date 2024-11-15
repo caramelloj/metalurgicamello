@@ -8,7 +8,7 @@ use App\Http\Controllers\CustomerController;
 
 Route::resource('/clientes', CustomerController::class);
 
-
+Route::post('/buscar-cliente', [CustomerController::class, 'getCustomer'])->name('search.customer');
 
 Route::get('/', function () {
     return view('welcome');

@@ -315,7 +315,7 @@ return [
         ],
         [
             'text' => 'Ver clientes',
-            'url' => 'admin/settings',
+            'route' => 'clientes.index',
             'icon' => 'fas fa-fw fa-eye',
         ],
         ['header' => 'Trabajos'],
