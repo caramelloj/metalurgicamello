@@ -12,7 +12,7 @@ class CustomerController extends Controller
 
         $customers = Customer::searchCustomer($request->customerName)->get();
 
-        return view('customer.show_customers', compact('customers'));
+        return view('customer.show', compact('customers'));
     }
 
     /**
@@ -20,9 +20,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
+        $customers = Customer::orderBy('id', 'DESC')->get();
 
-        return view('customer.show_customers', compact('customers'));
+        return view('customer.show', compact('customers'));
     }
 
     /**
@@ -31,7 +31,7 @@ class CustomerController extends Controller
     public function create()
     {
 
-        return view('customer.create_customer');
+        return view('customer.create');
     }
 
     /**
