@@ -2,27 +2,26 @@
 @section('title', 'Ver clientes')
 
 @section('content')
-
-<div class="container py-4 text-center">
+<br>
     <div class="container">
         <div class="row">
+            <div class="col-8">
             <form method="POST" action="{{ route('search.customer') }}">
-                @csrf
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Escriba el nombre del cliente para buscar..." name="customerName" id="inputDefault">
-                  </div>
-        </div>
-        <div class="row">
-            <input type="submit" class="btn btn-primary" value="Buscar">
+                <input type="text" class="form-control" placeholder="Escriba el nombre del cliente para buscar..." name="customerName" id="inputDefault">
+            </form>
+            </div>
+            @csrf
+            <div class="col-4">
+                <input type="submit" class="btn btn-primary" value="Buscar">
+            </div>
         </div>
     </div>
-</form>
 
 <hr>
 
 @php
 $heads = [
-    'Name',
+    'Nombre',
     'Cuit/CUil',
     'Teléfono',
     'Dirección',
@@ -37,7 +36,6 @@ $config = [
 ];
 @endphp
 
-{{-- Minimal example / fill data using the component slot --}}
 <x-adminlte-datatable id="table1" :heads="$heads" head-theme="dark">
     @foreach($customers as $customer)
         <tr>
@@ -61,5 +59,4 @@ $config = [
         </tr>
     @endforeach
 </x-adminlte-datatable>
-</div>
 @endsection
