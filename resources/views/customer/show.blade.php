@@ -8,13 +8,13 @@
             <div class="col-8">
             <form method="POST" action="{{ route('search.customer') }}">
                 <input type="text" class="form-control" placeholder="Escriba el nombre del cliente para buscar..." name="customerName" id="inputDefault">
-            </form>
             </div>
             @csrf
             <div class="col-4">
                 <input type="submit" class="btn btn-primary" value="Buscar">
             </div>
         </div>
+            </form>
     </div>
 
 <hr>
@@ -22,7 +22,7 @@
 @php
 $heads = [
     'Nombre',
-    'Cuit/CUil',
+    'Cuit/Cuil',
     'Teléfono',
     'Dirección',
     'Borrar',

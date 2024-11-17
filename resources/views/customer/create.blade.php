@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
 @section('content')
+<br>
     <x-adminlte-card title="Formulario de Registro" theme="dark" icon="fas fa-lg fa-user">
                 <form action="{{route('clientes.store')}}" method="POST">
             @csrf
@@ -22,6 +23,4 @@
             <x-adminlte-button class="btn-flat" type="submit" label="Enviar" theme="success" icon="fas fa-lg fa-save"/>
         </form>
     </x-adminlte-card>
-
-
 @endsection
