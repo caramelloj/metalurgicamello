@@ -307,22 +307,37 @@ return [
         ],
 
         // Sidebar items:
-        ['header' => 'Clientes'],
         [
-            'text' => 'Crear cliente',
-            'route' => 'clientes.create',
+            'text' => 'Clientes',
             'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Crear cliente',
+                    'route' => 'clientes.create',
+                    'icon' => 'fas fa-fw fa-plus-square',
+                ],
+                [
+                    'text' => 'Ver clientes',
+                    'route' => 'clientes.index',
+                    'icon' => 'fas fa-fw fa-eye',
+                ],
+            ],
         ],
         [
-            'text' => 'Ver clientes',
-            'route' => 'clientes.index',
-            'icon' => 'fas fa-fw fa-eye',
-        ],
-        ['header' => 'Trabajos'],
-        [
-            'text' => 'Ver trabajos',
-            'icon' => 'fas fa-fw fa-eye',
-            'url' => '#',
+            'text' => 'Trabajos',
+            'icon' => 'fas fa-fw fa-tachometer-alt',
+            'submenu' => [
+                [
+                    'text' => 'Ver trabajos',
+                    'route' => '',
+                    'icon' => 'fas fa-fw fa-eye',
+                ],
+/*                 [
+                    'text' => 'Ver clientes',
+                    'route' => 'clientes.index',
+                    'icon' => 'fas fa-fw fa-eye',
+                ], */
+            ],
         ],
     ],
 

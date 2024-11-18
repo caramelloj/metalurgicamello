@@ -59,11 +59,12 @@ class CustomerController extends Controller
                 'saldo' => $request->saldo
             ]);
         }else{
-            dd("CLIENTE EXISTENTE");
+
             return back()->with('error','Cuit Duplicado');
         }
 
-        return back()->with('success', 'Formulario procesado correctamente');
+        return to_route('clientes.index');
+
     }
 
     /**
@@ -79,7 +80,10 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customer = Customer::where('id', $id)->first();
+
+
+        return view('customer.edit', compact('customer'));
     }
 
     /**
@@ -87,7 +91,14 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $customer = Customer::where('id', $id)->first();
+        $customer->name = $request->customerName;
+        $customer->cuit_cuil = $request->customerCuit;
+        $customer->address = $request->customerAddress;
+        $customer->phone = $request->customerPhone;
+        $customer->save();
+
+        return to_route('clientes.index');
     }
 
     /**
@@ -95,6 +106,8 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Customer::where('id', $id)->delete();
+
+        return to_route('clientes.index');
     }
 }

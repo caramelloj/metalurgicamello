@@ -3,6 +3,7 @@
 
 @section('content')
 <br>
+
     <div class="container">
         <div class="row">
             <div class="col-8">
@@ -25,6 +26,7 @@ $heads = [
     'Cuit/Cuil',
     'Teléfono',
     'Dirección',
+    'Saldo',
     'Borrar',
     'Editar'
 ];
@@ -36,7 +38,7 @@ $config = [
 ];
 @endphp
 
-<x-adminlte-datatable id="table1" :heads="$heads" head-theme="dark">
+<x-adminlte-datatable id="table1" class="table table-bordered table-hover dataTable dtr-inline collapsed" :heads="$heads" head-theme="dark" >
     @foreach($customers as $customer)
         <tr>
 
@@ -44,6 +46,7 @@ $config = [
                 <td>{!! $customer->cuit_cuil !!}</td>
                 <td>{!! $customer->phone !!}</td>
                 <td>{!! $customer->address !!}</td>
+                <td>{!! $customer->saldo !!}</td>
                 <form action="{{ route('clientes.destroy',  $customer->id) }}" method="POST">
                     <td><a href=""><button class="btn btn-primary"><i class="fas fa-trash-alt fa-2x"></button></i></a></td>
                     @csrf
