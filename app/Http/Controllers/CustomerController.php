@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    // Query scope para buscar cliente
 
     public function getCustomer(Request $request){
 
@@ -96,6 +97,7 @@ class CustomerController extends Controller
         $customer->cuit_cuil = $request->customerCuit;
         $customer->address = $request->customerAddress;
         $customer->phone = $request->customerPhone;
+        $customer->saldo = $request->customerBalance;
         $customer->save();
 
         return to_route('clientes.index');

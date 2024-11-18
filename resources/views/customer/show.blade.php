@@ -28,7 +28,8 @@ $heads = [
     'Dirección',
     'Saldo',
     'Borrar',
-    'Editar'
+    'Editar',
+    'Cargar trabajo'
 ];
 
 
@@ -57,8 +58,11 @@ $config = [
                     @method('PUT')
                     <td><a href=""><button class="btn btn-primary"><i class="fas fa-user-edit fa-2x"></button></i></a></td>
                 </form>
-
-
+                <form action="{{ route('trabajos.show',  $customer->id) }}">
+                    @csrf
+                    @method('GET')
+                    <td><a href=""><button class="btn btn-primary"><i class="fas fa-plus fa-2x"></button></i></a></td>
+                </form>
         </tr>
     @endforeach
 </x-adminlte-datatable>

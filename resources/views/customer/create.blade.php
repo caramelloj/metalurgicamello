@@ -1,9 +1,9 @@
 @extends('adminlte::page')
-
+@section('title', 'Crear cliente')
 @section('content')
 <br>
     <x-adminlte-card title="Formulario de Registro" theme="dark" icon="fas fa-lg fa-user">
-                <form action="{{route('clientes.store')}}" method="POST">
+        <form action="{{route('clientes.store')}}" method="POST">
             @csrf
             <label for="nombre">Nombre:</label><br>
             <x-adminlte-input type="text" id="customerName" name="customerName" required/><br><br>

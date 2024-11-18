@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label class="col-form-label col-form-label-sm mt-8" for="saldo">Saldo:</label>
-                <input class="form-control form-control-sm" type="text" placeholder="" value="{{ $customer->saldo }}" id="customerPhone" name="customerPhone" pattern="[\+]?[0-9]{1,4}?[ -]?[0-9]{3}[ -]?[0-9]{4}" placeholder="Ej: +54 9 11 1234-5678" required>
+                <input class="form-control form-control-sm" type="text" placeholder="" value="{{ $customer->saldo }}" id="saldo" name="customerBalance" required>
             </div>
             <hr>
             <div class="form-group">
