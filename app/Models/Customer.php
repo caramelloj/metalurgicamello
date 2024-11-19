@@ -14,10 +14,10 @@ class Customer extends Model
         'saldo'
     ];
 
-        // Un cliente puede tener muchos trabajos
-    public function jobs()
+    // Un cliente puede tener muchos trabajos
+    public function works()
     {
-        return $this->hasMany(Job::class);
+        return $this->hasMany(Work::class);
     }
 
     public function scopeSearchCustomer($query, $nombre)

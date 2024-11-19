@@ -7,6 +7,10 @@
     <x-adminlte-card title="Formulario de Registro de trabajo" theme="dark">
 
         <form action="{{route('trabajos.store')}}" method="POST">
+            @csrf
+            <label for="id">ID del Cliente:</label>
+            <x-adminlte-input type="text" id="id" name="id" value="{{ $customer->id}}" readonly/>
+
             <label for="nombre">Nombre del Cliente:</label>
             <x-adminlte-input type="text" id="nombre" name="nombre" value="{{ $customer->name}}" readonly/>
 
@@ -37,7 +41,7 @@
             <label for="fecha_fin">Fecha de Fin:</label>
             <x-adminlte-input type="date" id="fecha_fin" name="fecha_fin" required/>
 
-            <button type="submit" class="btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-success btn-flat"><i class="fas fa-lg fa-save"></i>Enviar</button>
         </form>
     </x-adminlte-card>
 

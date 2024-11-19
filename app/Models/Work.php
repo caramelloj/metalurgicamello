@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Job extends Model
+class Work extends Model
 {
     protected $fillable = [
+        'customer_id',
         'titulo',
         'detalle',
+        'materiales',
         'costo_materiales',
         'costo_trabajo',
         'horas_trabajadas',
@@ -22,4 +24,12 @@ class Job extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+    // Conversion de datos
+    protected $casts = [
+        'materiales' => 'array',
+        'fecha_inicio' => 'date',
+        'fecha_fin' => 'date',
+    ];
+
 }

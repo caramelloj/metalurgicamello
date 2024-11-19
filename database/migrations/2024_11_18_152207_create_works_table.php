@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('works', function (Blueprint $table) {
             $table->id(); // Clave primaria
             $table->string('titulo'); // Campo de texto corto para el título
             $table->text('detalle'); // Campo de texto largo
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('fecha_inicio'); // Fecha de inicio
             $table->date('fecha_fin'); // Fecha de fin
             $table->json('materiales'); // Almacena materiales en formato JSON
-            $table->foreignId('client_id')->constrained()->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->timestamps(); // Campos de marca de tiempo (created_at y updated_at)
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('works');
     }
 };

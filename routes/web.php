@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\JobController;
+use App\Http\Controllers\WorkController;
 use App\Http\Controllers\CustomerController;
 
 // App routes
@@ -24,7 +24,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/clientes', CustomerController::class);
 
-    Route::resource('/trabajos', JobController::class);
+    Route::resource('/trabajos', WorkController::class);
+
+    Route::get('/works/all', [WorkController::class, 'getWorks'])->name('all.works');
 
     Route::post('/buscar-cliente', [CustomerController::class, 'getCustomer'])->name('search.customer');
 });

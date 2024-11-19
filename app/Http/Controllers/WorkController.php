@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Work;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class WorkController extends Controller
 {
-        /**
+    public function getWorks()
+    {
+        // Obtiene todos los registros de la tabla `works`
+        $works = Work::all();
+
+        // Retorna los registros en formato JSON
+        return response()->json(['data' => $works]);
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('work.show');
     }
 
     /**
@@ -28,11 +38,22 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        Job::create([
-            'name' => $request->customerName,
-            'cuit_cuil' => $request->customerCuit,
+
+        Work::create([
+            'customer_id' => $request->id,
+            'titulo' => $request->titulo,
+            'detalle' => $request->detalle,
+            'costo_materiales' => $request->costo_materiales,
+            'costo_trabajo' => $request->costo_trabajo,
+            'horas_trabajadas' => $request->horas_trabajadas,
+            'fecha_inicio' => $request->fecha_inicio,
+            'fecha_fin' => $request->fecha_fin,
+            'materiales' => $request->materiales,
 
         ]);
+
+        return to_route('trabajos.index');
+
     }
 
     /**
@@ -42,9 +63,7 @@ class JobController extends Controller
     {
         $customer = Customer::where('id', $id)->first();
 
-        return view('job.create',compact('customer'));
-
-
+        return view('work.create',compact('customer'));
     }
 
     /**
