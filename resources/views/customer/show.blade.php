@@ -72,7 +72,9 @@
                             "previous": "Anterior",
                             "next": "Siguiente",
                     }
-                }
+
+                },
+                order: [[1, 'DESC']]
             });
         });
     </script>

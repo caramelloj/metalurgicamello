@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Work;
-use App\Models\Photo;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class WorkController extends Controller
 {
@@ -15,10 +15,9 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $works = Work::all();
-        $photos = Photo::all();
+        $works = Work::orderBy('id', 'desc')->get();
 
-        return view('work.show', compact('works','photos'));
+        return view('work.show', compact('works'));
     }
 
     /**
@@ -35,29 +34,18 @@ class WorkController extends Controller
     public function store(Request $request)
     {
 
-        // Validar las fotos
-        $request->validate([
-            'photos.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-
-        // Almacenar las fotos
-        $paths = [];
+        $photos = [];
         if ($request->hasFile('photos')) {
-            foreach ($request->file('photos') as $photo) {
-                $paths = $photo->store('photos', 'public');
-
-                    // Guardar la ruta en la base de datos
-                    Photo::create([
-                        'path' => $paths,
-                        'id_trabajo' => $request->id_trabajo
-                    ]);
+            foreach ($request->file('photos') as $imagen) {
+                $path = $imagen->store('photos', 'public'); // Guardar imagen en storage/public/imagenes
+                $photos[] = $path; // Agregar la ruta al array
             }
         }
 
 
         Work::create([
             'customer_id' => $request->id,
+            'nombre_cliente' => $request->nombre,
             'titulo' => $request->titulo,
             'detalle' => $request->detalle,
             'costo_materiales' => $request->costo_materiales,
@@ -66,7 +54,7 @@ class WorkController extends Controller
             'fecha_inicio' => $request->fecha_inicio,
             'fecha_fin' => $request->fecha_fin,
             'materiales' => $request->materiales,
-
+            'imagenes' => json_encode($photos), // Convertir a JSON antes de guardar
         ]);
 
         return to_route('getall.works');

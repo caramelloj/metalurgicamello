@@ -5,24 +5,19 @@
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
 @endsection
-
 @section('content')
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Listado de trabajos realizados</h3>
-    </div>
-
-    <div class="card-body">
+<br>
         <table id="works" class="table table-bordered table-striped shadow-lg mt-4">
             <thead class="bg-primary text-white">
                 <tr>
+                    <th>Cliente</th>
                     <th>Titulo</th>
                     <th>Detalle</th>
-                    <th>Costo de materiales</th>
-                    <th>Costo de trabajo</th>
-                    <th>Horas trabajadas</th>
-                    <th>Fecha inicio</th>
-                    <th>Fecha_fin</th>
+                    <th>C.material</th>
+                    <th>C.trabajo</th>
+                    <th>Hs.trabajo</th>
+                    <th>F.inicio</th>
+                    <th>F.fin</th>
                     <th>Materiales</th>
                     <th>Fotos</th>
                 </tr>
@@ -30,23 +25,25 @@
             <tbody>
                 @foreach ($works as $work)
                 <tr>
+                    <td>{{ $work->nombre_cliente }}</td>
                     <td>{{ $work->titulo }}</td>
                     <td>{{ $work->detalle }}</td>
                     <td>{{ $work->costo_materiales }}</td>
                     <td>{{ $work->costo_trabajo }}</td>
                     <td>{{ $work->horas_trabajadas }}</td>
-                    <td>{{ $work->fecha_inicio }}</td>
-                    <td>{{ $work->fecha_fin }}</td>
+                    <td>{{ $work->fecha_inicio->format('d/m/Y')}}</td>
+                    <td>{{ $work->fecha_fin->format('d/m/Y')}}</td>
                     <td>{{ $work->materiales }}</td>
-                    @foreach ($photos as $photo)
-                    <td><img src="{{ asset('storage/' . $photo->path) }}" alt="Foto" width="100" height="100"></td>
-                    @endforeach
+                    <td>
+                        @foreach (json_decode($work->imagenes) as $imagen)
+                        <img src="{{ asset('storage/' . $imagen) }}" alt="Imagen del producto" style="width: 100px; height: 100px; object-fit: cover;">
+                        @endforeach
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    </div>
-</div>
+
 @section('js')
     <!-- DataTables JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -66,7 +63,8 @@
                             "previous": "Anterior",
                             "next": "Siguiente",
                     }
-                }
+                },
+                order: [[1, 'DESC']]
             });
         });
     </script>

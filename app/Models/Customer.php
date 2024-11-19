@@ -11,7 +11,7 @@ class Customer extends Model
         'cuit_cuil',
         'address',
         'phone',
-        'saldo'
+        'saldo',
     ];
 
     // Un cliente puede tener muchos trabajos

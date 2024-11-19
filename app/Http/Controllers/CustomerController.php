@@ -7,14 +7,6 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    // Query scope para buscar cliente
-
-    public function getCustomer(Request $request){
-
-        $customers = Customer::searchCustomer($request->customerName)->get();
-
-        return view('customer.show', compact('customers'));
-    }
 
     /**
      * Display a listing of the resource.

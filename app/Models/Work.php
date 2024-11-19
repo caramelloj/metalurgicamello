@@ -17,7 +17,9 @@ class Work extends Model
         'fecha_inicio',
         'fecha_fin',
         'materiales',
-        'path'
+        'imagenes',
+        'nombre_cliente'
+
     ];
 
     // Un trabajo pertenece a un cliente

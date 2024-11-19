@@ -22,6 +22,8 @@ return new class extends Migration
             $table->date('fecha_fin'); // Fecha de fin
             $table->json('materiales'); // Almacena materiales en formato JSON
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->string('nombre_cliente');
+            $table->json('imagenes'); // Campo JSON para varias imágenes
             $table->timestamps(); // Campos de marca de tiempo (created_at y updated_at)
         });
     }
