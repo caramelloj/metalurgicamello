@@ -36,7 +36,7 @@
                     <td>{{ $work->materiales }}</td>
                     <td>
                         @foreach (json_decode($work->imagenes) as $imagen)
-                        <img src="{{ asset('storage/' . $imagen) }}" alt="Imagen del producto" style="width: 100px; height: 100px; object-fit: cover;">
+                        <img src="{{ asset('storage/' . $imagen) }}" alt="Imagen del trabajo" style="width: 100px; height: 100px; object-fit: cover;">
                         @endforeach
                     </td>
                 </tr>
