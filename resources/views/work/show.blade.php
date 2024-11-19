@@ -11,19 +11,20 @@
     <div class="card-header">
         <h3 class="card-title">Listado de trabajos realizados</h3>
     </div>
+
     <div class="card-body">
         <table id="works" class="table table-bordered table-striped shadow-lg mt-4">
             <thead class="bg-primary text-white">
                 <tr>
-                    <th>titulo</th>
-                    <th>detalle</th>
-                    <th>materiales</th>
-                    <th>costo_materiales</th>
-                    <th>costo_trabajo</th>
-                    <th>horas_trabajadas</th>
-                    <th>fecha_inicio</th>
-                    <th>fecha_fin</th>
-                    <th>materiales</th>
+                    <th>Titulo</th>
+                    <th>Detalle</th>
+                    <th>Costo de materiales</th>
+                    <th>Costo de trabajo</th>
+                    <th>Horas trabajadas</th>
+                    <th>Fecha inicio</th>
+                    <th>Fecha_fin</th>
+                    <th>Materiales</th>
+                    <th>Fotos</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,13 +32,15 @@
                 <tr>
                     <td>{{ $work->titulo }}</td>
                     <td>{{ $work->detalle }}</td>
-                    <td>{{ $work->materiales }}</td>
                     <td>{{ $work->costo_materiales }}</td>
                     <td>{{ $work->costo_trabajo }}</td>
                     <td>{{ $work->horas_trabajadas }}</td>
                     <td>{{ $work->fecha_inicio }}</td>
                     <td>{{ $work->fecha_fin }}</td>
                     <td>{{ $work->materiales }}</td>
+                    @foreach ($photos as $photo)
+                    <td><img src="{{ asset('storage/' . $photo->path) }}" alt="Foto" width="100" height="100"></td>
+                    @endforeach
                 </tr>
                 @endforeach
             </tbody>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Work;
+use App\Models\Photo;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class WorkController extends Controller
     public function index()
     {
         $works = Work::all();
+        $photos = Photo::all();
 
-        return view('work.show', compact('works'));
+        return view('work.show', compact('works','photos'));
     }
 
     /**
@@ -32,6 +34,27 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
+
+        // Validar las fotos
+        $request->validate([
+            'photos.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+
+        // Almacenar las fotos
+        $paths = [];
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photo) {
+                $paths = $photo->store('photos', 'public');
+
+                    // Guardar la ruta en la base de datos
+                    Photo::create([
+                        'path' => $paths,
+                        'id_trabajo' => $request->id_trabajo
+                    ]);
+            }
+        }
+
 
         Work::create([
             'customer_id' => $request->id,
@@ -56,8 +79,15 @@ class WorkController extends Controller
     public function show(string $id)
     {
         $customer = Customer::where('id', $id)->first();
+        $ultimoRegistro = Work::orderBy('id', 'desc')->first();
 
-        return view('work.create',compact('customer'));
+        if ($ultimoRegistro == null){
+            $ultimoRegistro = 0;
+        }else{
+            $ultimoRegistro = $ultimoRegistro->id;
+        }
+
+        return view('work.create',compact('customer', 'ultimoRegistro'));
     }
 
     /**

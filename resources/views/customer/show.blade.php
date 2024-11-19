@@ -8,21 +8,6 @@
 
 @section('content')
 <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-            <form method="POST" action="{{ route('search.customer') }}">
-                <input type="text" class="form-control" placeholder="Escriba el nombre del cliente para buscar..." name="customerName" id="inputDefault">
-            </div>
-            @csrf
-            <div class="col-4">
-                <input type="submit" class="btn btn-primary" value="Buscar">
-            </div>
-        </div>
-            </form>
-    </div>
-<hr>
-
 
 <table id="customers" class="table table-bordered table-hover dataTable dtr-inline collapsed">
     <thead class="bg-primary text-white">

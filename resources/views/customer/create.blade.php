@@ -2,7 +2,7 @@
 @section('title', 'Crear cliente')
 @section('content')
 <br>
-    <x-adminlte-card title="Formulario de Registro" theme="dark" icon="fas fa-lg fa-user">
+    <x-adminlte-card title="Formulario de Registro" theme="primary" icon="fas fa-lg fa-user">
         <form action="{{route('clientes.store')}}" method="POST">
             @csrf
             <label for="nombre">Nombre:</label><br>
