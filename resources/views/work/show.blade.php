@@ -3,7 +3,10 @@
 
 @section('css')
     <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 @endsection
 @section('content')
 <br>
@@ -50,6 +53,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+    <!-- DataTables Buttons -->
+
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+    <!-- PDFMake -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -64,9 +76,38 @@
                             "next": "Siguiente",
                     }
                 },
-                order: [[1, 'DESC']]
+                order: [[1, 'DESC']],
+                dom: 'Bfrtip', // Habilita los botones
+            buttons: [
+                'copy',
+                'excel',
+                'csv',
+                {
+                    extend: 'pdfHtml5',
+                    title: 'Reporte de Tabla', // Título del PDF
+                    text: 'Exportar a PDF', // Texto del botón
+                    orientation: 'landscape', // Orientación: portrait o landscape
+                    pageSize: 'A4', // Tamaño de la página: A4, Letter, etc.
+                    customize: function (doc) {
+                        doc.styles.title = {
+                            fontSize: 16,
+                            bold: true,
+                            alignment: 'center',
+                        };
+                        doc.styles.tableHeader = {
+                            bold: true,
+                            fontSize: 12,
+                            color: 'white',
+                            fillColor: '#4CAF50', // Color del encabezado
+                        };
+                    }
+                }
+            ]
             });
         });
     </script>
+
+
+
 @endsection
 @endsection
