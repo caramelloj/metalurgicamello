@@ -8,21 +8,15 @@ use Illuminate\Http\Request;
 
 class WorkController extends Controller
 {
-    public function getWorks()
-    {
-        // Obtiene todos los registros de la tabla `works`
-        $works = Work::all();
-
-        // Retorna los registros en formato JSON
-        return response()->json(['data' => $works]);
-    }
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('work.show');
+        $works = Work::all();
+
+        return view('work.show', compact('works'));
     }
 
     /**
@@ -52,7 +46,7 @@ class WorkController extends Controller
 
         ]);
 
-        return to_route('trabajos.index');
+        return to_route('getall.works');
 
     }
 

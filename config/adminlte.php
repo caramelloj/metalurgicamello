@@ -329,7 +329,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Ver trabajos',
-                    'route' => 'all.works',
+                    'route' => 'getall.works',
                     'icon' => 'fas fa-fw fa-eye',
                 ],
 /*                 [

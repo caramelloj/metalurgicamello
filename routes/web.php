@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/trabajos', WorkController::class);
 
-    Route::get('/works/all', [WorkController::class, 'getWorks'])->name('all.works');
+    Route::get('/trabajos', [WorkController::class, 'index'])->name('getall.works');
 
     Route::post('/buscar-cliente', [CustomerController::class, 'getCustomer'])->name('search.customer');
 });

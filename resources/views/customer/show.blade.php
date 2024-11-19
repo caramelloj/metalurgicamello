@@ -1,9 +1,13 @@
 @extends('adminlte::page')
 @section('title', 'Ver clientes')
 
+@section('css')
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
+@endsection
+
 @section('content')
 <br>
-
     <div class="container">
         <div class="row">
             <div class="col-8">
@@ -17,32 +21,25 @@
         </div>
             </form>
     </div>
-
 <hr>
 
-@php
-$heads = [
-    'Nombre',
-    'Cuit/Cuil',
-    'Teléfono',
-    'Dirección',
-    'Saldo',
-    'Borrar',
-    'Editar',
-    'Cargar trabajo'
-];
 
-
-$config = [
-    'order' => [[1, 'asc']],
-    'columns' => [null, null, null, ['orderable' => false]],
-];
-@endphp
-
-<x-adminlte-datatable id="table1" class="table table-bordered table-hover dataTable dtr-inline collapsed" :heads="$heads" head-theme="dark" >
-    @foreach($customers as $customer)
+<table id="customers" class="table table-bordered table-hover dataTable dtr-inline collapsed">
+    <thead class="bg-primary text-white">
         <tr>
-
+            <th>Nombre</th>
+            <th>Cuit/cuil</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Saldo</th>
+            <th>Eliminar</th>
+            <th>Editar</th>
+            <th>Cargar trabajo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($customers as $customer)
+        <tr>
                 <td>{!! $customer->name !!}</td>
                 <td>{!! $customer->cuit_cuil !!}</td>
                 <td>{!! $customer->phone !!}</td>
@@ -65,5 +62,33 @@ $config = [
                 </form>
         </tr>
     @endforeach
-</x-adminlte-datatable>
+    </tbody>
+
+</table>
+@endsection
+
+
+@section('js')
+    <!-- DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#customers').DataTable({
+                responsive: true,
+                "language":{
+                    "search": "Buscar",
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "info":     "Mostrando página _PAGE_ de _PAGES_",
+                    "paginate":  {
+                            "previous": "Anterior",
+                            "next": "Siguiente",
+                    }
+                }
+            });
+        });
+    </script>
 @endsection
