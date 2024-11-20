@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventory', function (Blueprint $table) {
+        Schema::create('material', function (Blueprint $table) {
             $table->id(); // ID auto incremental (clave primaria)
             $table->string('descripcion'); // Descripción del producto
             $table->string('unidad'); // Unidad de medida (e.g., "kg", "litro", "pieza")
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventory');
+        Schema::dropIfExists('material');
     }
 };

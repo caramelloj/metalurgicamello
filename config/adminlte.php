@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Metalurgica',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Metalurgica</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -340,14 +340,14 @@ return [
             'submenu' => [
                 [
                     'text' => 'Crear material',
-                    'route' => 'material.create',
+                    'route' => 'materiales.create',
                     'icon' => 'fas fa-fw fa-ruler',
                 ],
-/*                 [
-                    'text' => 'Ver clientes',
-                    'route' => 'clientes.index',
+                [
+                    'text' => 'Ver materiales',
+                    'route' => 'materiales.index',
                     'icon' => 'fas fa-fw fa-eye',
-                ], */
+                ],
             ],
         ],
     ],

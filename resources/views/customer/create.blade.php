@@ -6,7 +6,7 @@
         <form action="{{route('clientes.store')}}" method="POST">
             @csrf
             <label for="nombre">Nombre:</label><br>
-            <x-adminlte-input type="text" id="customerName" name="customerName" required/><br><br>
+            <x-adminlte-input type="text" id="customerName" name="customerName" required/>
 
             <label for="cuit">CUIT/CUIL:</label><br>
             <x-adminlte-input type="text" id="customerCuit" name="customerCuit" pattern="\d{2}-\d{8}-\d" placeholder="20-12345678-9" required/>

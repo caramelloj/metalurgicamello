@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/trabajos', WorkController::class);
 
-    Route::resource('/material', MaterialController::class);
+    Route::resource('/materiales', MaterialController::class);
 
     Route::get('/trabajos', [WorkController::class, 'index'])->name('getall.works');
 
