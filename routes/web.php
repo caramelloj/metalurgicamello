@@ -1,13 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\MaterialController;
 
 // App routes
-
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/clientes', CustomerController::class);
 
     Route::resource('/trabajos', WorkController::class);
+
+    Route::resource('/material', MaterialController::class);
 
     Route::get('/trabajos', [WorkController::class, 'index'])->name('getall.works');
 

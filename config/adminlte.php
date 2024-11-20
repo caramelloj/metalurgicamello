@@ -332,6 +332,17 @@ return [
                     'route' => 'getall.works',
                     'icon' => 'fas fa-fw fa-eye',
                 ],
+            ],
+        ],
+        [
+            'text' => 'Materiales',
+            'icon' => 'fas fa-fw fa-wrench',
+            'submenu' => [
+                [
+                    'text' => 'Crear material',
+                    'route' => 'material.create',
+                    'icon' => 'fas fa-fw fa-ruler',
+                ],
 /*                 [
                     'text' => 'Ver clientes',
                     'route' => 'clientes.index',
