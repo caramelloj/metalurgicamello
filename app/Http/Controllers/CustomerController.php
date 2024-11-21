@@ -45,10 +45,10 @@ class CustomerController extends Controller
 
         if ($cuit_cuil_comprobation == null){
             Customer::create([
-                'name' => $request->customerName,
+                'nombre' => $request->customerName,
                 'cuit_cuil' => $request->customerCuit,
-                'address' => $request->customerAddress,
-                'phone' => $request->customerPhone,
+                'direccion' => $request->customerAddress,
+                'telefono' => $request->customerPhone,
                 'saldo' => $request->saldo
             ]);
         }else{

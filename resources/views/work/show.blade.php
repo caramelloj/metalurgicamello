@@ -13,6 +13,7 @@
     <table id="works" class="table table-bordered table-striped shadow-lg mt-4">
         <thead class="bg-primary text-white">
             <tr>
+                <th>ID</th>
                 <th>Cliente</th>
                 <th>Titulo</th>
                 <th>Detalle</th>
@@ -28,6 +29,7 @@
         <tbody>
             @foreach ($works as $work)
             <tr>
+                <td>{!! $work->id !!}</td>
                 <td>{{ $work->nombre_cliente }}</td>
                 <td>{{ $work->titulo }}</td>
                 <td>{{ $work->detalle }}</td>
@@ -76,7 +78,7 @@
                             "next": "Siguiente",
                     }
                 },
-                order: [[1, 'DESC']],
+                order: [[0, 'DESC']],
                 dom: 'Bfrtip', // Habilita los botones
             buttons: [
                 'copy',

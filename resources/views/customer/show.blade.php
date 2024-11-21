@@ -12,6 +12,7 @@
 <table id="customers" class="table table-bordered table-hover dataTable dtr-inline collapsed">
     <thead class="bg-primary text-white">
         <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Cuit/cuil</th>
             <th>Teléfono</th>
@@ -25,10 +26,11 @@
     <tbody>
         @foreach($customers as $customer)
         <tr>
-                <td>{!! $customer->name !!}</td>
+                <td>{!! $customer->id !!}</td>
+                <td>{!! $customer->nombre !!}</td>
                 <td>{!! $customer->cuit_cuil !!}</td>
-                <td>{!! $customer->phone !!}</td>
-                <td>{!! $customer->address !!}</td>
+                <td>{!! $customer->telefono !!}</td>
+                <td>{!! $customer->direccion !!}</td>
                 <td>{!! $customer->saldo !!}</td>
                 <form action="{{ route('clientes.destroy',  $customer->id) }}" method="POST">
                     <td><a href=""><button class="btn btn-primary"><i class="fas fa-trash-alt fa-2x"></button></i></a></td>
@@ -74,7 +76,7 @@
                     }
 
                 },
-                order: [[1, 'DESC']]
+                order: [[0, 'DESC']]
             });
         });
     </script>
