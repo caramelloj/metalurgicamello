@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id(); // Crea un campo 'id' como clave primaria autoincrementable
-            $table->string('name'); // Campo 'name' tipo string
+            $table->string('nombre'); // Campo 'name' tipo string
             $table->string('cuit_cuil'); // Campo 'cuit_cuil' tipo entero (puede ser bigInteger si es muy grande)
-            $table->string('address'); // Campo 'address' tipo string
-            $table->string('phone'); // Campo 'phone' tipo string, se asume que se guardará en formato texto
+            $table->string('direccion'); // Campo 'address' tipo string
+            $table->string('telefono'); // Campo 'phone' tipo string, se asume que se guardará en formato texto
             $table->bigInteger('saldo'); // Campo 'saldo' tipo entero (puede ser bigInteger si el saldo es grande)
             $table->timestamps(); // Campos 'created_at' y 'updated_at'
         });
