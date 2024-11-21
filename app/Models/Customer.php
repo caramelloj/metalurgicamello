@@ -20,9 +20,4 @@ class Customer extends Model
         return $this->hasMany(Work::class);
     }
 
-    public function scopeSearchCustomer($query, $nombre)
-    {
-
-        return $query->where('name', 'Like', "%$nombre%");
-    }
 }
