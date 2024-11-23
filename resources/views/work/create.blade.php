@@ -15,7 +15,7 @@
             <x-adminlte-input type="text" id="id" name="id" value="{{ $customer->id}}" readonly/>
 
             <label for="nombre">Nombre del Cliente:</label>
-            <x-adminlte-input type="text" id="nombre" name="nombre" value="{{ $customer->name}}" readonly/>
+            <x-adminlte-input type="text" id="nombre" name="nombre" value="{{ $customer->nombre}}" readonly/>
 
             <label for="cuit">CUIT:</label>
             <x-adminlte-input type="text" id="cuit" name="cuit" value="{{ $customer->cuit_cuil}}" readonly/>

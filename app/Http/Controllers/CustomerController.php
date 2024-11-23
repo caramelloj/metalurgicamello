@@ -34,7 +34,7 @@ class CustomerController extends Controller
     {
         $rules = [
             'nombre' => 'required|string|max:255', // El nombre es requerido, debe ser una cadena y con un máximo de 255 caracteres
-            'cuit' => 'required|regex:/^\d{2}-\d{8}-\d$/', // CUIT/CUIL debe cumplir con el formato XX-XXXXXXXX-X (2 números, 8 números, 1 número)
+            'cuit' => 'required', // CUIT/CUIL debe cumplir con el formato XX-XXXXXXXX-X (2 números, 8 números, 1 número)
             'telefono' => 'required|regex:/^\+?[0-9]{1,4}?[ -]?[0-9]{3}[ -]?[0-9]{4}$/', // Teléfono puede ser con o sin código de país, y con espacios o guiones
             'direccion' => 'required|string|max:255', // La dirección es requerida, debe ser una cadena y con un máximo de 255 caracteres
             'saldo' => 'required|numeric|min:0', // El saldo debe ser un número y no puede ser negativo
@@ -85,10 +85,10 @@ class CustomerController extends Controller
     public function update(Request $request, string $id)
     {
         $customer = Customer::where('id', $id)->first();
-        $customer->name = $request->customerName;
+        $customer->nombre = $request->customerName;
         $customer->cuit_cuil = $request->customerCuit;
-        $customer->address = $request->customerAddress;
-        $customer->phone = $request->customerPhone;
+        $customer->direccion = $request->customerAddress;
+        $customer->telefono = $request->customerPhone;
         $customer->saldo = $request->customerBalance;
         $customer->save();
 

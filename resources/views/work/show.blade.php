@@ -30,15 +30,15 @@
             @foreach ($works as $work)
             <tr>
                 <td>{!! $work->id !!}</td>
-                <td>{{ $work->nombre_cliente }}</td>
-                <td>{{ $work->titulo }}</td>
-                <td>{{ $work->detalle }}</td>
-                <td>{{ $work->costo_materiales }}</td>
-                <td>{{ $work->costo_trabajo }}</td>
-                <td>{{ $work->horas_trabajadas }}</td>
-                <td>{{ $work->fecha_inicio->format('d/m/Y')}}</td>
-                <td>{{ $work->fecha_fin->format('d/m/Y')}}</td>
-                <td>{{ $work->materiales }}</td>
+                <td>{!! $work->nombre_cliente !!}</td>
+                <td>{!!$work->titulo !!}</td>
+                <td>{!!$work->detalle!!}</td>
+                <td>{!!$work->costo_materiales !!}</td>
+                <td>{!!$work->costo_trabajo!!}</td>
+                <td>{!!$work->horas_trabajadas!!}</td>
+                <td>{!!$work->fecha_inicio->format('d/m/Y')!!}</td>
+                <td>{!! $work->fecha_fin->format('d/m/Y')!!}</td>
+                <td>{!! $work->materiales !!}</td>
                 <td>
                     @foreach (json_decode($work->imagenes) as $imagen)
                     <img src="{{ asset('storage/' . $imagen) }}" alt="Imagen del trabajo" style="width: 100px; height: 100px; object-fit: cover;">
