@@ -83,7 +83,12 @@ class WorkController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $work = Work::where('id', $id)->first();
+
+        $fecha_inicio = $work->fecha_inicio = Carbon::createFromFormat('d/m/Y', '24/11/2024')->format('Y-m-d'); // Ejemplo de conversión
+        $fecha_fin = $work->fecha_fin = Carbon::createFromFormat('d/m/Y', '24/11/2024')->format('Y-m-d'); // Ejemplo de conversión
+
+        return view('work.edit',compact('work','fecha_inicio','fecha_fin'));
     }
 
     /**
@@ -91,7 +96,19 @@ class WorkController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $work = Work::where('id',$id)->first();
+        $work->titulo = $request->titulo;
+        $work->detalle = $request->detalle;
+        $work->costo_materiales = $request->costo_materiales;
+        $work->costo_trabajo = $request->costo_trabajo;
+        $work->fecha_inicio= $request->fecha_inicio;
+        $work->fecha_fin = $request->fecha_fin;
+
+
+        $work->save();
+
+        return to_route('getall.works');
     }
 
     /**
@@ -99,6 +116,8 @@ class WorkController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Work::where('id', $id)->delete();
+
+        return to_route('getall.works');
     }
 }

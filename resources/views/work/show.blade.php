@@ -19,18 +19,20 @@
                 <th>Detalle</th>
                 <th>C.material</th>
                 <th>C.trabajo</th>
-                <th>Hs.trabajo</th>
-                <th>F.inicio</th>
-                <th>F.fin</th>
+                <th>Hs</th>
+                <th>Inicio</th>
+                <th>Fin</th>
                 <th>Materiales</th>
+                <th>Supr</th>
+                <th>Editar</th>
                 <th>Fotos</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($works as $work)
             <tr>
-                <td>{!! $work->id !!}</td>
-                <td>{!! $work->nombre_cliente !!}</td>
+                <td>{!!$work->id!!}</td>
+                <td>{!!$work->nombre_cliente!!}</td>
                 <td>{!!$work->titulo !!}</td>
                 <td>{!!$work->detalle!!}</td>
                 <td>{!!$work->costo_materiales !!}</td>
@@ -39,6 +41,16 @@
                 <td>{!!$work->fecha_inicio->format('d/m/Y')!!}</td>
                 <td>{!! $work->fecha_fin->format('d/m/Y')!!}</td>
                 <td>{!! $work->materiales !!}</td>
+                <form action="{{ route('trabajos.destroy',  $work->id) }}" method="POST">
+                    <td><a href=""><button class="btn btn-primary"><i class="fas fa-trash-alt fa-2x"></button></i></a></td>
+                    @csrf
+                    @method('DELETE')
+                </form>
+                <form action="{{ route('trabajos.edit',  $work->id) }}">
+                    @csrf
+                    @method('PUT')
+                    <td><a href=""><button class="btn btn-primary"><i class="fas fa-user-edit fa-2x"></button></i></a></td>
+                </form>
                 <td>
                     @foreach (json_decode($work->imagenes) as $imagen)
                     <img src="{{ asset('storage/' . $imagen) }}" alt="Imagen del trabajo" style="width: 100px; height: 100px; object-fit: cover;">
