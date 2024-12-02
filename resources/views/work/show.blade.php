@@ -57,7 +57,7 @@
                     <img src="{{ asset('storage/' . $imagen) }}" alt="Imagen del trabajo" style="width: 100px; height: 100px; object-fit: cover;">
                     @endforeach
                 </td>
-                <td><a href="{{ route('trabajos.dummpPDF', $work->id) }}"><button class="btn btn-primary"><i class="far fa-file-pdf"></i></button></a></td>
+                <td><a href="{{ route('trabajos.dummpPDF', $work->id) }}"><button class="btn btn-primary"><i class="far fa-file-pdf fa-2x"></i></button></a></td>
             </tr>
             @endforeach
         </tbody>

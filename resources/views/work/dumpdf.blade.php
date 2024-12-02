@@ -30,7 +30,7 @@
       text-align: center;
     }
     .thead-intervencion{
-        background: rgba(255, 0, 0, 0.918);
+        background: rgba(146, 24, 29,1);
         color: white;
     }
     body {
@@ -45,24 +45,24 @@
   <title>Impresion de Registro</title>
 </head>
 <body>
-  {{--
-  <img src="{{ asset('img/ypf.png')}}" width="130" height="50">
-  <img src="{{ asset('img/mannfilter.png')}}" width="130" height="50">
-  <img src="{{ asset('img/firestone.png')}}" width="130" height="50">
-  <img src="{{ asset('img/bridgestone.png')}}" width="130" height="50">
- --}}
 
-{{--
-  <div id="customer">
-    <p><b>Propietario: </b>{{ $vehicleData[0]->NPropietario  }}</p>
-    <p><b>Cuit-Cuil </b>{{ $vehicleData[0]->CuitCuil }}</p>
-    <p><b>Modelo: </b>{{ $vehicleData[0]->Modelo }}</p>
-    <p><b>Aceite: </b>{{ $vehicleData[0]->Aceite }}</p>
-    <p><b>Patente: </b>{{ $vehicleData[0]->Dominio }}</p>
-    <p><b>Cubiertas: </b>{{ $vehicleData[0]->NCubiertas }}</p>
+@php
+    $path = 'img/logo.jpeg';
+    $type = pathinfo($path, PATHINFO_EXTENSION);
+    $data = file_get_contents($path);
+    $b64 = 'data:img/' . $type . ';base64,' . base64_encode($data);
+@endphp
+<div style="text-align: center">
+    <img src= "<?php echo $b64?>" width="200" height="200">
+</div>
 
-  </div> --}}
-
+<hr>
+<div id="aboutus" style="text-align: center">
+    <p><b>Dirección: </b>Córdoba, Tránsito, República Argentina 421</p>
+    <p><b>Telefonos: </b>3576411567 / 3576411524</p>
+    <p><b>Instagram: </b>tallercaramello</p>
+</div>
+<hr>
   <h2>Detalle de trabajo realizado</h2>
 
   <table class="tables" cellspacing="0" cellpadding="0" style="text-align: center" width="100%">
@@ -72,11 +72,9 @@
             <th>Cliente</th>
             <th>Titulo</th>
             <th>Detalle</th>
-            <th>C.material</th>
-            <th>C.trabajo</th>
             <th>Hs</th>
-            <th>Inicio</th>
-            <th>Fin</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
             <th>Materiales</th>
           </tr>
       </thead>
@@ -87,8 +85,6 @@
                 <td>{!!$work->nombre_cliente!!}</td>
                 <td>{!!$work->titulo !!}</td>
                 <td>{!!$work->detalle!!}</td>
-                <td>{!!$work->costo_materiales !!}</td>
-                <td>{!!$work->costo_trabajo!!}</td>
                 <td>{!!$work->horas_trabajadas!!}</td>
                 <td>{!!$work->fecha_inicio->format('d/m/Y')!!}</td>
                 <td>{!! $work->fecha_fin->format('d/m/Y')!!}</td>
@@ -97,7 +93,6 @@
           @endforeach
       </tbody>
       </table>
-
     <br>
     <h2> Fotos del trabajo</h2>
 
