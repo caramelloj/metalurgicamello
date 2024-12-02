@@ -6,6 +6,7 @@ use App\Models\Work;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use PDF;
 
 class WorkController extends Controller
 {
@@ -119,5 +120,14 @@ class WorkController extends Controller
         Work::where('id', $id)->delete();
 
         return to_route('getall.works');
+    }
+
+    public function dumpdf($id){
+
+        $works = Work::where('id', $id)->get();
+        $customer_name = $works[0]->nombre_cliente;
+        $pdf = PDF::loadView('work.dumpdf', compact('works'));
+
+        return $pdf->download('Detalle de trabajo -'.$id.'-'.$customer_name.'.pdf');
     }
 }

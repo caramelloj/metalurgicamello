@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/trabajos', WorkController::class);
 
+    Route::get('imprimir-historial/{id?}',[WorkController::class, 'dumpdf'])->name('trabajos.dummpPDF');
+
     Route::resource('/materiales', MaterialController::class);
 
     Route::get('/trabajos', [WorkController::class, 'index'])->name('getall.works');
@@ -33,3 +35,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
