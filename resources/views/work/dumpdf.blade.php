@@ -59,7 +59,7 @@
 <hr>
 <div id="aboutus" style="text-align: center">
     <p><b>Dirección: </b>Córdoba, Tránsito, República Argentina 421</p>
-    <p><b>Telefonos: </b>3576411567 / 3576411524</p>
+    <p><b>Teléfonos: </b>3576411567 / 3576411524</p>
     <p><b>Instagram: </b>tallercaramello</p>
 </div>
 <hr>
