@@ -31,16 +31,27 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
+
         // Validar los datos del formulario
         $validatedData = $request->validate([
             'descripcion' => 'required|string|max:255',
             'unidad' => 'required|string|max:50',
             'cantidad' => 'required|integer|min:0',
             'precio' => 'required|numeric|min:0',
+            /* 'total' => $total */
+        ]);
+        $total = ($request->precio)*($request->cantidad);
+
+        Material::create([
+            'descripcion' => $request->descripcion,
+            'unidad' => $request->unidad,
+            'cantidad' => $request->cantidad,
+            'precio' => $request->precio,
+            'total' => $total
         ]);
 
         // Crear un nuevo registro en la base de datos
-        $material = Material::create($validatedData);
+        /* $material = Material::create($validatedData); */
 
         return to_route('materiales.index');
     }

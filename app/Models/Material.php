@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Material extends Model
 {
-    protected $table = 'material';
+    protected $table = 'materials';
 
     protected $fillable =[
         'descripcion',
         'unidad',
         'cantidad',
         'precio',
+        'total'
     ];
 }
